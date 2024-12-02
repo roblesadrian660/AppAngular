@@ -1,0 +1,48 @@
+<!--
+  Recuerde conservar los id, no deben ser modificados
+  ids = user-list__filter, user-list__table, user-list__table-item-[index], user-list__table-item-[index]-avatar, user-list__table-item-[index]-first_name, user-list__table-item-[index]-email, user-list__table-item-[index]-btn-delete
+  Remplazar [index] por el valor ejemplo "user-list__table-item-0"
+-->
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Lista usuario</h2>
+
+  <div class="mb-3" >
+    <label for="filter" class="form-label">Filtrar usuarios</label>
+    <input id="user-list__filter" class="form-control" type="text" placeholder="Search..." (input)="filterUsers($event)">
+  </div>
+  <table class="table table-hover table-bordered shadow-sm rounded" id="user-list__table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Imangen</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users| filterUserByName: searchTerm; let i = index" class="align-middle">
+        <th scope="row" id="user-list__table-item-{{i}}">{{ i + 1 }}</th>
+        <td id="user-list__table-item-{{i}}-first_name">{{ user.first_name }}</td>
+        <td id="user-list__table-item-{{i}}-email">{{ user.email }}</td>
+        <td>
+          <img
+            id="user-list__table-item-{{i}}-avatar"
+            [src]="user | imagesUser"
+            alt="avatar"
+            class="img-fluid rounded-circle"
+            style="width: 50px; height: 50px;">
+        </td>
+        <td>
+          <button
+            id="user-list__table-item-{{i}}-btn-delete"
+            class="btn btn-danger btn-sm"
+            (click)="deleteUser(i)">
+            <i class="bi bi-trash"></i> Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

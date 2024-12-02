@@ -1,0 +1,54 @@
+
+
+<div class="container d-flex justify-content-center align-items-center bg-light" style="height: 100vh;">
+  <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px; border-radius: 12px;">
+    <h2 class="text-center mb-4 text-primary fw-bold" style="font-size: 2.5rem;">Bienvenido</h2>
+    <div>
+      <div class="mb-3">
+        <label for="login__email" class="form-label fw-bold text-secondary">Correo</label>
+        <input
+          id="login__email"
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="Ingrese su correo"
+          [(ngModel)]="email"
+          required
+          style="border-radius: 8px;" />
+        <div *ngIf="emailInvalid" id="login__email-error" class="text-danger small mt-1">
+          Email is required
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="login__password" class="form-label fw-bold text-secondary">Contraseña</label>
+        <input
+          id="login__password"
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Enter your password"
+          [(ngModel)]="password"
+          required
+          style="border-radius: 8px;" />
+        <div *ngIf="passwordInvalid" id="login__password-error" class="text-danger small mt-1">
+          {{ errorPasswordMessage }}
+        </div>
+      </div>
+
+      <button
+        (click)="onLogin()"
+        id="login__btn-login"
+        class="btn btn-primary w-100 py-2"
+        style="border-radius: 8px;">
+        Iniciar sesion
+      </button>
+
+      <div class="mb-3" *ngIf="errorMessage !== ''">
+        <div class="alert error" >
+          {{ errorMessage }}
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+

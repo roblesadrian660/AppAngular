@@ -1,0 +1,46 @@
+<!--
+  Recuerde conservar los id, no deben ser modificados
+  ids = user-create__name, user-create__name-error, user-create__job, user-create__job-error, user-create__btn-create
+-->
+<div class="container mt-4">
+  <h2 class="mb-4">Crear usuario</h2>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="needs-validation">
+    <div class="mb-3">
+      <label for="user-create__name" class="form-label">Nombre</label>
+      <input
+        type="text"
+        id="user-create__name"
+        class="form-control"
+        formControlName="name"
+      />
+    </div>
+    <div *ngIf="userForm.get('name')?.invalid" id="user-create__name-error" class="alert error">
+      Name is required
+    </div>
+    <div class="mb-3">
+      <label for="user-create__job" class="form-label">Trabajo</label>
+      <input
+        type="text"
+        id="user-create__job"
+        class="form-control"
+        formControlName="job"
+      />
+    </div>
+    <div *ngIf="userForm.get('job')?.invalid" id="user-create__job-error" class="alert error" >
+      Job is required
+    </div>
+    <button
+      type="submit"
+      id="user-create__btn-create"
+      class="btn btn-primary"
+      [disabled]="userForm.invalid"
+    >
+      Create
+    </button>
+  </form>
+
+  <div *ngIf="response" class="alert alert-success mt-3">
+    User created successfully: {{ response | json }}
+  </div>
+</div>
+

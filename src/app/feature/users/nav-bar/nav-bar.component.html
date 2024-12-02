@@ -1,0 +1,49 @@
+<!--
+  Recuerde conservar los id, no deben ser modificados
+  ids = nav-bar__btn-list-user, nav-bar__btn-create-user, nav-bar__btn-logout
+-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-primary" href="#">MyApp</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" >
+          <a
+            id="nav-bar__btn-list-user"
+            class="btn btn-outline-primary me-2"
+            routerLink="./list"
+          >
+            Listado
+          </a>
+        </li>
+        <li class="nav-item" >
+          <a
+            id="nav-bar__btn-create-user"
+            class="btn btn-outline-primary me-2"
+            routerLink="./create"
+          >
+            Añadir
+          </a>
+        </li>
+      </ul>
+      <a
+        id="nav-bar__btn-logout"
+        class="btn btn-danger"
+        (click)="logout()"
+      >
+        Logout
+      </a>
+    </div>
+  </div>
+</nav>
